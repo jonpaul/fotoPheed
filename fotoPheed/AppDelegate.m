@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "FeedViewController.h"
+#import "FeedTableViewController.h"
 #import "FavoritesViewController.h"
 #import "ProfileViewController.h"
 
@@ -19,10 +19,9 @@
     ProfileViewController *profileViewController = [[ProfileViewController alloc] init];
     UINavigationController *profileNavController = [[UINavigationController alloc] initWithRootViewController:profileViewController];
     
-    FeedViewController *feedViewController = [[FeedViewController alloc] init];
-    UINavigationController *feedNavController = [[UINavigationController alloc] initWithRootViewController:
-                                                 feedViewController];
-    
+    FeedTableViewController *feedTableViewController = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    UINavigationController *feedNavController = [[UINavigationController alloc] initWithRootViewController:feedTableViewController];
+
     FavoritesViewController *favoritesViewController = [[FavoritesViewController alloc] init];
     UINavigationController *favoritesNavController = [[UINavigationController alloc] initWithRootViewController:favoritesViewController];
     
