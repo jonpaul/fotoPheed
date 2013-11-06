@@ -7,12 +7,31 @@
 //
 
 #import "AppDelegate.h"
+#import "FeedViewController.h"
+#import "FavoritesViewController.h"
+#import "ProfileViewController.h"
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)                  application:(UIApplication *)application
+        didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    FeedViewController *feedViewController = [[FeedViewController alloc] init];
+    FavoritesViewController *favoritesViewController = [[FavoritesViewController alloc] init];    
+    ProfileViewController *profileViewController = [[ProfileViewController alloc] init];
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    [tabBarController setViewControllers:@[feedViewController, favoritesViewController, profileViewController]];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = tabBarController;
+    
+    
     // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    
     return YES;
 }
 							

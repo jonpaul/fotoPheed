@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  FavoritesViewController.h
 //  fotoPheed
 //
 //  Created by Jon-Paul Lussier on 11/5/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface FavoritesViewController : UIViewController
 
 @end
