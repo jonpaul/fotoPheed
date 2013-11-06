@@ -7,6 +7,7 @@
 //
 
 #import "FeedViewController.h"
+#import "ProfileViewController.h"
 
 @interface FeedViewController ()
 
@@ -27,7 +28,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blueColor];
+/*
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kittens.jpg"]];
+    
+    imageView.contentMode = UIViewContentModeTop;
+    imageView.frame = [;
+    
+    [self.view addSubview:imageView]; */
+    
+    UIButton *profileButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    profileButton.frame = CGRectMake(60, 300, 200, 44);
+    [profileButton setTitle:@"View Profile" forState:UIControlStateNormal];
+    [self.view addSubview:profileButton];
+    [profileButton addTarget:self action:@selector(showProfile:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)showProfile:(UIButton *)sender
+{
+    ProfileViewController *profileViewController = [[ProfileViewController alloc] init];
+    [self.navigationController pushViewController:profileViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

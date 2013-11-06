@@ -16,21 +16,24 @@
 - (BOOL)                  application:(UIApplication *)application
         didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    FeedViewController *feedViewController = [[FeedViewController alloc] init];
-    FavoritesViewController *favoritesViewController = [[FavoritesViewController alloc] init];    
     ProfileViewController *profileViewController = [[ProfileViewController alloc] init];
+    UINavigationController *profileNavController = [[UINavigationController alloc] initWithRootViewController:profileViewController];
     
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    [tabBarController setViewControllers:@[feedViewController, favoritesViewController, profileViewController]];
+    FeedViewController *feedViewController = [[FeedViewController alloc] init];
+    UINavigationController *feedNavController = [[UINavigationController alloc] initWithRootViewController:
+                                                 feedViewController];
+    
+    FavoritesViewController *favoritesViewController = [[FavoritesViewController alloc] init];
+    UINavigationController *favoritesNavController = [[UINavigationController alloc] initWithRootViewController:favoritesViewController];
+    
+    UITabBarController *tabController = [[UITabBarController alloc] init];
+    [tabController setViewControllers:@[feedNavController, favoritesNavController, profileNavController]];
+
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = tabBarController;
-    
-    
-    // Override point for customization after application launch.
+    self.window.rootViewController = tabController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
     
     return YES;
 }

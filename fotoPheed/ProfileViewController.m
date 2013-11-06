@@ -27,17 +27,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+/*
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     self.scrollView.contentSize = CGSizeMake(320,590);
+*/     
+    UIButton *profileButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [profileButton setImage:[UIImage imageNamed:@"kittens.jpg"]
+                   forState:UIControlStateNormal];
+    [profileButton setImage:[UIImage imageNamed:@"kittens.jpg"]
+                   forState:UIControlStateHighlighted];
+    profileButton.frame = CGRectMake(20, 100, 120, 120);
     
-    UIImageView *higgieView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kittens.jpg"]];
-    higgieView.frame = CGRectMake(20,20,100,114);
+    [self.view addSubview:profileButton];
+    [profileButton addTarget:self action:@selector(showZoomedProfile:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.scrollView addSubview:higgieView];
-    
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,140,280,40)];
+/*    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,190,280,40)];
     nameLabel.text = @"Name: Jon-Paul Lussier Jr.";
     [self.scrollView addSubview:nameLabel];
     
@@ -57,9 +62,27 @@
     
   	UILabel *twitterName = [[UILabel alloc] initWithFrame:CGRectMake(20, 500, 280, 40)];
     twitterName.text = @"@jonpaullussier";
-    [self.scrollView addSubview:twitterName];
+    [self.scrollView addSubview:twitterName]; */
     
     [self.view addSubview:_scrollView];
+}
+
+- (void)showZoomedProfile:(UIButton *)sender
+{
+    NSLog(@"I happened!");
+    UIViewController *showBigImageViewController = [[UIViewController alloc] init];
+    showBigImageViewController.view.frame = self.view.frame;
+    showBigImageViewController.title = @"ZOMG KITTEH!";
+    
+    UIImageView *bigKittenView = [[UIImageView alloc]
+                                  initWithImage:[UIImage imageNamed:@"kittens.jpg"]];
+    [bigKittenView setContentMode:UIViewContentModeScaleAspectFill];
+    
+    bigKittenView.frame = showBigImageViewController.view.frame;
+    [showBigImageViewController.view addSubview:bigKittenView];
+    
+    [self.navigationController pushViewController:showBigImageViewController
+                                         animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
